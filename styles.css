@@ -4,30 +4,30 @@ body,html{
     height: 100%;
 }
 
-#main{
+.main{
     padding: 30vh 35vw;
-    display: none; //grid
+    display: grid; //grid
     grid-template-columns: 100px 100px 100px;
     grid-template-rows: 100px 100px 100px;
 }
 
-#main div{
+.main div{
     border: 1px solid black;
     font-size: 90px;
 }
 
-#main div:nth-child(-n + 3 ){
+.main div:nth-child(-n + 3 ){
     border-top: none;
 }
 
-#main div:nth-child(3n){
+.main div:nth-child(3n){
     border-right: none;
 }
 
-#main div:nth-child(3n - 2){
+.main div:nth-child(3n - 2){
     border-left: none;
 }
-#main div:nth-child(n + 7){
+.main div:nth-child(n + 7){
     border-bottom: none;
 }
 
@@ -38,7 +38,7 @@ body,html{
 form{
     background-color:whitesmoke;
     height: 100%;
-    display: flex;
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -58,7 +58,7 @@ form #name{
     
 }
 
-#start{
+.start{
     position:fixed;
     border: 1px solid black;
     width: 10vw;
@@ -76,3 +76,31 @@ form #name{
     font-size: large;
 }
 
+.show{
+    display: flex;
+}
+
+.hide{
+    display: none;
+    z-index: index -1;
+}
+
+.restart{
+    position:fixed;
+    border: 1px solid black;
+    width: 8vw;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+    margin-left: 2vw;
+    border-radius: 10px;
+    border: 1px solid blue;
+    background-color: blue;
+    color: whitesmoke;
+    font-weight: 400;
+    font-size:medium;
+
+}
+   

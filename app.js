@@ -19,6 +19,11 @@ let game = function(){
     let dom = document.getElementById('main');
     dom.addEventListener('click',target);
     dom.addEventListener('click',check);
+    
+    let button = document.getElementById('start');
+    button.addEventListener('click',hide);
+
+    let name = '';
 
     function target(e){
         let d = e.target;
@@ -71,6 +76,20 @@ let game = function(){
             }
         }
     }
+
+    function hide(){
+        name = document.getElementById('name').value;
+        players(name);
+        name.value = '';
+        document.getElementById('form').className = 'hide';
+        document.getElementById('start').className = 'restart';
+        dom.className = 'main';
+        dom.style.display = 'grid';
+        }
+
+    return{
+        name
+    }
     
 }
 
@@ -81,6 +100,7 @@ let players = function(name){
         name
     }
 }
+
 
 
 
