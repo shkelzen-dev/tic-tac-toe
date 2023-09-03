@@ -1,29 +1,16 @@
 const gameBoard = (() => {
-    let gameboard = [];
-    
-    // function render(){
-    //     let dom = document.getElementById('main');
-    //     dom.innerHTML = gameboard;
-    //     }
-    //     render();
-    // return {
-    //     players
-    // }
-    
-  return {gameboard};
-
-    
+  let gameboard = [];
+       
+  return {gameboard};   
 })();
 
-let game = function(){
+let game = (function(){
     let dom = document.getElementById('main');
     dom.addEventListener('click',target);
     dom.addEventListener('click',check);
     let winner = document.getElementById('winner');
     
-    
-
-    let name = '';
+    let getName = '';
     let randomNumber = 0;
     let computer = function(){
         
@@ -54,7 +41,6 @@ let game = function(){
     }
 
     
-
     function target(e){
         let d = e.target;
         //d.innerText = '✗';
@@ -75,6 +61,7 @@ let game = function(){
         gameBoard.gameboard = [];
         for(let i = 1 ; i<=9 ; i++){
             document.getElementById(i).innerText = '';
+            
         }
     }
 
@@ -83,11 +70,15 @@ let game = function(){
         for(let i=0 ; i<7; i+=3){
             if(gameBoard.gameboard[i] == gameBoard.gameboard[i+1] &&
                  gameBoard.gameboard[i+2] == gameBoard.gameboard[i] 
-                 && gameBoard.gameboard[i] == 'o'){
-                console.log('we have a winner');
+                 && gameBoard.gameboard[i] != null ){
+                    if(gameBoard.gameboard[i] == 'o'){
+                      winner.innerText = `${getName} is winner!`;
+                }else{
+                    winner.innerText = 'Computer is winner!';
+                    
+                }
                 winner.style.display = 'flex';
                 dom.style.display = 'none';
-                
                 clear();
             }else{
                 console.log('no winner test 1 ');
@@ -96,11 +87,14 @@ let game = function(){
         for(let i=0 ; i<3; i++){
             if(gameBoard.gameboard[i] == gameBoard.gameboard[i+3] && 
                 gameBoard.gameboard[i+3] == gameBoard.gameboard[i+6] &&
-                gameBoard.gameboard[i] == 'o'){
-                    console.log('you won');
+                gameBoard.gameboard[i] != null){
+                    if(gameBoard.gameboard[i] == 'o'){
+                        winner.innerText = `${getName} is winner!`
+                    }else{
+                        winner.innerText = 'Computer is winner!'
+                    }
                     winner.style.display = 'flex';
                     dom.style.display = 'none';
-                    
                     clear();
                 }else{
                     console.log('no winner test 2');
@@ -108,64 +102,60 @@ let game = function(){
         }
         if((gameBoard.gameboard[0] == gameBoard.gameboard[4] &&
              gameBoard.gameboard[4] == gameBoard.gameboard[8] && 
-             gameBoard.gameboard[0] == 'o') || 
+             gameBoard.gameboard[0] != null) || 
              (gameBoard.gameboard[2] == gameBoard.gameboard[4] && 
                 gameBoard.gameboard[4] == gameBoard.gameboard[6] &&
-                gameBoard.gameboard[2] == 'o')){
-                    console.log('congratulation');
+                gameBoard.gameboard[2] != null)){
+                    if(gameBoard.gameboard[0] == 'o' || gameBoard.gameboard[2] == 'o'){
+                        winner.innerText = `${getName} is winner!`;
+                    }else{
+                        winner.innerText = 'Computer is winner';
+                    }
                     winner.style.display = 'flex';
                     dom.style.display = 'none';
-                    
                     clear();
                 }else{
                     console.log('no winner test 3');
                 }
-                let n= 0;
+                let n = 0;
         for(let i=0; i<9; i++){
             
             if(gameBoard.gameboard[i] != null){
                 n = n+1;
             }
             if(n == 9){
-                console.log('tie');
                 winner.style.display = 'flex';
                 winner.innerText = 'Tie';
                 dom.style.display = 'none';
-                
                 clear();
             }
         }
     }
 
+    let player1 = {};
     function hide(){
-       
+        
+        getName = document.getElementById('name').value;
+        player1 = players(getName);
         winner.style.display = 'none';
         dom.style.display = 'grid';
-        
         document.getElementById('form').className = 'hide';
         document.getElementById('start').className = 'restart';
-        
         dom.className = 'main';
-        
-        name = document.getElementById('name').value;
-        players(name);
-        name.value = '';
+       
+        //getName.value = '';
         clear();
         }
 
         let button = document.getElementById('start');
         button.addEventListener('click',hide);
 
-        
-       
-
     return{
-        name
+        player1
     }
     
-}
+})();
 
-game();
 
 let players = function(name){
     return{
