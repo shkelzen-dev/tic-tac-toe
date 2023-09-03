@@ -145,6 +145,10 @@ let game = (function(){
        
         //getName.value = '';
         clear();
+
+        let body = document.querySelector('body');
+        body.style.display = 'flex';
+        body.style.justifyContent = 'space-around';
         }
 
         let button = document.getElementById('start');

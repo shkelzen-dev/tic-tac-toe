@@ -4,11 +4,6 @@ body,html{
     height: 100%;
 }
 
-body{
-    display: flex;
-    justify-content: space-around;
-}
-
 .main{
     position:absolute;
     margin: 30vh 35vw;
