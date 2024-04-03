@@ -4,4 +4,4 @@ Just a tic-tac-toe game
 
 You can play it online :
 
-https://shkelzen-hub.github.io/tic-tac-toe/
+https://shkelzen-dev.github.io/tic-tac-toe/
